@@ -1,0 +1,11 @@
+package com.orlinskas.kernel_inspection.database;
+
+import androidx.room.Database;
+import androidx.room.RoomDatabase;
+
+import com.orlinskas.kernel_inspection.model.Vehicle;
+
+@Database(entities = {Vehicle.class}, version = 1, exportSchema = false)
+public abstract class MyDatabase extends RoomDatabase {
+    public abstract VehicleDao notificationDao();
+}
