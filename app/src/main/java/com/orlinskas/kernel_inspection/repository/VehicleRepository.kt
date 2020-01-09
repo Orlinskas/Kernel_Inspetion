@@ -6,7 +6,7 @@ import com.orlinskas.kernel_inspection.mvvm.model.Vehicle
 class VehicleRepository(private val database: VehicleDatabase) {
 
     fun find(id: Long): Vehicle {
-        return  database.vehicleDao().find(id)
+        return database.vehicleDao().find(id)
     }
 
     fun findAll(): List<Vehicle> {

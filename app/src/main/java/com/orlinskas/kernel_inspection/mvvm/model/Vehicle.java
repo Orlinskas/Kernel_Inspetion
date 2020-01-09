@@ -3,8 +3,6 @@ package com.orlinskas.kernel_inspection.mvvm.model;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import com.orlinskas.kernel_inspection.mvvm.vievmodel.Trailer;
-
 import java.util.List;
 
 @Entity

@@ -26,5 +26,4 @@ public class CardListViewModel (private val findCardsUseCase: FindCardsUseCase) 
         this.failureLiveData.postValue(failure)
     }
 
-
 }
