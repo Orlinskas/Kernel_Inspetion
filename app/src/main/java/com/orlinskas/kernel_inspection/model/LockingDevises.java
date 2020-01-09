@@ -11,4 +11,15 @@ class LockingDevises {
         this.status = status;
     }
 
+    public String getCheckMark() {
+        return checkMark;
+    }
+
+    public String getCarrier() {
+        return carrier;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
 }

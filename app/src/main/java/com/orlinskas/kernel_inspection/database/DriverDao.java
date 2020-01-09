@@ -6,24 +6,24 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.orlinskas.kernel_inspection.model.Vehicle;
+import com.orlinskas.kernel_inspection.model.Driver;
 
 import java.util.List;
 
 @Dao
-public interface VehicleDao {
+public interface DriverDao {
     @Query("SELECT * FROM driver WHERE id == :id")
-    Vehicle find(long id);
+    Driver find(long id);
 
-    @Query("SELECT * FROM vehicle")
-    List<Vehicle> findAll();
+    @Query("SELECT * FROM driver")
+    List<Driver> findAll();
 
     @Insert
-    void insert(Vehicle vehicle);
+    void insert(Driver driver);
 
     @Delete
-    void delete(Vehicle vehicle);
+    void delete(Driver driver);
 
     @Update
-    void update(Vehicle vehicle);
+    void update(Driver driver);
 }

@@ -1,18 +1,22 @@
 package com.orlinskas.kernel_inspection.model;
 
 import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 import java.util.List;
 
 @Entity
 public class Vehicle {
+    @PrimaryKey
+    private long id;
     private String manufacturer;
     private Trailer trailer;
     private Driver driver;
     private String registrationNumber;
     private List<Long> arrivalTimeMillis;
 
-    public Vehicle(String manufacturer, Trailer trailer, Driver driver, String registrationNumber, long arrivalTimeMillis) {
+    public Vehicle(long id, String manufacturer, Trailer trailer, Driver driver, String registrationNumber, List<Long> arrivalTimeMillis) {
+        this.id = id;
         this.manufacturer = manufacturer;
         this.trailer = trailer;
         this.driver = driver;
@@ -44,11 +48,11 @@ public class Vehicle {
         this.registrationNumber = registrationNumber;
     }
 
-    public long getArrivalTimeMillis() {
+    public List<Long> getArrivalTimeMillis() {
         return arrivalTimeMillis;
     }
 
-    public void setArrivalTimeMillis(long arrivalTimeMillis) {
+    public void setArrivalTimeMillis(List<Long> arrivalTimeMillis) {
         this.arrivalTimeMillis = arrivalTimeMillis;
     }
 
@@ -58,5 +62,9 @@ public class Vehicle {
 
     public void setTrailer(Trailer trailer) {
         this.trailer = trailer;
+    }
+
+    public long getId() {
+        return id;
     }
 }
