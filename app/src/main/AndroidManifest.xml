@@ -4,6 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.orlinskas.kernel_inspection">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
@@ -21,7 +24,15 @@
             </intent-filter>
         </activity>
 
-
+        <receiver
+            android:name="NetworkChangeReceiver"
+            android:label="NetworkChangeReceiver" >
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"
+                    tools:ignore="BatteryLife" />
+                <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
+            </intent-filter>
+        </receiver>
 
     </application>
 

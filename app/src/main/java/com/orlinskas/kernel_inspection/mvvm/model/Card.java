@@ -1,4 +1,4 @@
-package com.orlinskas.kernel_inspection.model;
+package com.orlinskas.kernel_inspection.mvvm.model;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;

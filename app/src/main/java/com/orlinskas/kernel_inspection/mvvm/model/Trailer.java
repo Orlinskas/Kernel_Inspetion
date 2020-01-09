@@ -1,4 +1,4 @@
-package com.orlinskas.kernel_inspection.model;
+package com.orlinskas.kernel_inspection.mvvm.model;
 
 import androidx.annotation.NonNull;
 
@@ -12,7 +12,7 @@ public class Trailer {
     private List<LockingDevises> lockingDevises;
     private List<Long> arrivalTimesMillis;
 
-    Trailer(@NotNull String registrationNumber, List<LockingDevises> lockingDevises, List<Long> arrivalTimesMillis) {
+    public Trailer(@NotNull String registrationNumber, List<LockingDevises> lockingDevises, List<Long> arrivalTimesMillis) {
         this.registrationNumber = registrationNumber;
         this.lockingDevises = lockingDevises;
         this.arrivalTimesMillis = arrivalTimesMillis;

@@ -6,7 +6,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.orlinskas.kernel_inspection.model.Card;
+import com.orlinskas.kernel_inspection.mvvm.model.Card;
 
 ;import java.util.List;
 

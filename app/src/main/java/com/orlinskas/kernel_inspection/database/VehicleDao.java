@@ -6,7 +6,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.orlinskas.kernel_inspection.model.Vehicle;
+import com.orlinskas.kernel_inspection.mvvm.vievmodel.Vehicle;
 
 import java.util.List;
 

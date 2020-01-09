@@ -6,7 +6,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.orlinskas.kernel_inspection.model.Driver;
+import com.orlinskas.kernel_inspection.mvvm.model.Driver;
 
 import java.util.List;
 

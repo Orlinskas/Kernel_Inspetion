@@ -1,7 +1,7 @@
 package com.orlinskas.kernel_inspection.repository
 
 import com.orlinskas.kernel_inspection.database.VehicleDatabase
-import com.orlinskas.kernel_inspection.model.Vehicle
+import com.orlinskas.kernel_inspection.mvvm.model.Vehicle
 
 class VehicleRepository(private val database: VehicleDatabase) {
 
