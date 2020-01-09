@@ -4,7 +4,7 @@ import com.orlinskas.kernel_inspection.exeption.Failure
 import com.orlinskas.kernel_inspection.functional.Either
 import kotlinx.coroutines.*
 
-abstract class BaseUseCase<out Type, in Params> where Type: Any{
+abstract class BaseUseCase<out Type, in Params> where Type: Any {
 
     abstract suspend fun run(params: Params): Either<Failure, Type>
 

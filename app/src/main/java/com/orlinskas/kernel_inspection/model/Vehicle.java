@@ -7,7 +7,7 @@ import java.util.List;
 
 @Entity
 public class Vehicle {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     private long id;
     private String manufacturer;
     private Trailer trailer;
@@ -15,8 +15,7 @@ public class Vehicle {
     private String registrationNumber;
     private List<Long> arrivalTimeMillis;
 
-    public Vehicle(long id, String manufacturer, Trailer trailer, Driver driver, String registrationNumber, List<Long> arrivalTimeMillis) {
-        this.id = id;
+    public Vehicle(String manufacturer, Trailer trailer, Driver driver, String registrationNumber, List<Long> arrivalTimeMillis) {
         this.manufacturer = manufacturer;
         this.trailer = trailer;
         this.driver = driver;

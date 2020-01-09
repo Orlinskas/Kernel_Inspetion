@@ -1,16 +1,18 @@
 package com.orlinskas.kernel_inspection.model;
 
-import androidx.room.Entity;
+import androidx.annotation.NonNull;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-@Entity
-class Trailer {
+public class Trailer {
+    @NonNull
     private String registrationNumber;
     private List<LockingDevises> lockingDevises;
     private List<Long> arrivalTimesMillis;
 
-    Trailer(String registrationNumber, List<LockingDevises> lockingDevises, List<Long> arrivalTimesMillis) {
+    Trailer(@NotNull String registrationNumber, List<LockingDevises> lockingDevises, List<Long> arrivalTimesMillis) {
         this.registrationNumber = registrationNumber;
         this.lockingDevises = lockingDevises;
         this.arrivalTimesMillis = arrivalTimesMillis;

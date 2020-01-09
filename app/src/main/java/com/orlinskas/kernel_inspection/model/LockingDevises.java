@@ -1,11 +1,13 @@
 package com.orlinskas.kernel_inspection.model;
 
-class LockingDevises {
+import com.orlinskas.kernel_inspection.enums.LockingDevisesStatus;
+
+public class LockingDevises {
     private String checkMark;
     private String carrier;
-    private boolean status;
+    private Enum<LockingDevisesStatus> status;
 
-    public LockingDevises(String checkMark, String carrier, boolean status) {
+    public LockingDevises(String checkMark, String carrier, Enum<LockingDevisesStatus> status) {
         this.checkMark = checkMark;
         this.carrier = carrier;
         this.status = status;
@@ -19,7 +21,7 @@ class LockingDevises {
         return carrier;
     }
 
-    public boolean isStatus() {
+    public Enum<LockingDevisesStatus> getStatus() {
         return status;
     }
 }
