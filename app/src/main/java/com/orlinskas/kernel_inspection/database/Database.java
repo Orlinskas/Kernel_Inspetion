@@ -51,21 +51,21 @@ public class Database extends OrmLiteSqliteOpenHelper {
         }
     }
 
-    public CardDao getGoalDAO() throws SQLException {
+    public CardDao getCardDAO() throws SQLException {
         if(cardDao == null) {
             cardDao = new CardDao(getConnectionSource(), Card.class);
         }
         return cardDao;
     }
 
-    public VehicleDao getRoleDAO() throws SQLException {
+    public VehicleDao getVehicleDAO() throws SQLException {
         if(vehicleDao == null) {
             vehicleDao = new VehicleDao(getConnectionSource(), Vehicle.class);
         }
         return vehicleDao;
     }
 
-    private DriverDao getDriverDao() throws SQLException {
+    public DriverDao getDriverDao() throws SQLException {
         if(driverDao == null) {
             driverDao = new DriverDao(getConnectionSource(), Driver.class);
         }

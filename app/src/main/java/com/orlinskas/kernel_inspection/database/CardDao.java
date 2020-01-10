@@ -9,11 +9,15 @@ import java.util.Collection;
 
 public class CardDao extends BaseDaoImpl<Card, Integer> {
 
-    protected CardDao(ConnectionSource connectionSource, Class<Card> dataClass) throws SQLException {
+    CardDao(ConnectionSource connectionSource, Class<Card> dataClass) throws SQLException {
         super(connectionSource, dataClass);
     }
 
     public Collection<Card> getAllCards() throws SQLException{
         return this.queryForAll();
+    }
+
+    public Card findFrom(int id) throws SQLException {
+        return this.queryForId(id);
     }
 }

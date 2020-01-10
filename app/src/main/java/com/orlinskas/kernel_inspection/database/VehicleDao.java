@@ -9,11 +9,15 @@ import java.util.Collection;
 
 public class VehicleDao extends BaseDaoImpl<Vehicle, Integer> {
 
-    protected VehicleDao(ConnectionSource connectionSource, Class<Vehicle> dataClass) throws SQLException {
+    VehicleDao(ConnectionSource connectionSource, Class<Vehicle> dataClass) throws SQLException {
         super(connectionSource, dataClass);
     }
 
     public Collection<Vehicle> getAllVehicles() throws SQLException{
         return this.queryForAll();
+    }
+
+    public Vehicle findFrom(int id) throws SQLException {
+        return this.queryForId(id);
     }
 }

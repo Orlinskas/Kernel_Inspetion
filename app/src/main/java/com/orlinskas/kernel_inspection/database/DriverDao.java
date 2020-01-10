@@ -9,11 +9,15 @@ import java.util.Collection;
 
 public class DriverDao extends BaseDaoImpl<Driver, Integer> {
 
-    protected DriverDao(ConnectionSource connectionSource, Class<Driver> dataClass) throws SQLException {
+    DriverDao(ConnectionSource connectionSource, Class<Driver> dataClass) throws SQLException {
         super(connectionSource, dataClass);
     }
 
     public Collection<Driver> getAllDrivers() throws SQLException{
         return this.queryForAll();
+    }
+
+    public Driver findFrom(int id) throws SQLException {
+        return this.queryForId(id);
     }
 }

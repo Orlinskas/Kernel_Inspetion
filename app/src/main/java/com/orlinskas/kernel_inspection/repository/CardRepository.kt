@@ -1,26 +1,27 @@
 package com.orlinskas.kernel_inspection.repository
 
+import com.orlinskas.kernel_inspection.database.Database
 import com.orlinskas.kernel_inspection.mvvm.model.Card
 
-class CardRepository(private val database: CardDatabase) {
+class CardRepository(private val database: Database) {
 
-    fun find(id: Long): Card {
-        return database.waitingCardDao().find(id)
+    fun find(id: Int): Card {
+        return database.cardDAO.findFrom(id)
     }
 
-    fun findAll(): List<Card> {
-        return database.waitingCardDao().findAll()
+    fun findAll(): Collection<Card> {
+        return database.cardDAO.allCards
     }
 
     fun insert(card: Card) {
-        database.waitingCardDao().insert(card)
+        database.cardDAO.create(card)
     }
 
     fun update(card: Card) {
-        database.waitingCardDao().update(card)
+        database.cardDAO.update(card)
     }
 
     fun delete(card: Card) {
-        database.waitingCardDao().delete(card)
+        database.cardDAO.delete(card)
     }
 }
