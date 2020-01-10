@@ -1,29 +1,19 @@
 package com.orlinskas.kernel_inspection.database;
 
-import androidx.room.Dao;
-import androidx.room.Delete;
-import androidx.room.Insert;
-import androidx.room.Query;
-import androidx.room.Update;
-
+import com.j256.ormlite.dao.BaseDaoImpl;
+import com.j256.ormlite.support.ConnectionSource;
 import com.orlinskas.kernel_inspection.mvvm.model.Card;
 
-;import java.util.List;
+import java.sql.SQLException;
+import java.util.Collection;
 
-@Dao
-public interface CardDao {
-    @Query("SELECT * FROM driver WHERE id == :id")
-    Card find(long id);
+public class CardDao extends BaseDaoImpl<Card, Integer> {
 
-    @Query("SELECT * FROM Card")
-    List<Card> findAll();
+    protected CardDao(ConnectionSource connectionSource, Class<Card> dataClass) throws SQLException {
+        super(connectionSource, dataClass);
+    }
 
-    @Insert
-    void insert(Card card);
-
-    @Delete
-    void delete(Card card);
-
-    @Update
-    void update(Card card);
+    public Collection<Card> getAllCards() throws SQLException{
+        return this.queryForAll();
+    }
 }

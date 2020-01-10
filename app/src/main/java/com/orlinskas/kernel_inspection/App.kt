@@ -2,10 +2,8 @@ package com.orlinskas.kernel_inspection
 
 import android.app.Application
 import android.content.Context
-import androidx.room.Room
-import com.orlinskas.kernel_inspection.database.CardDatabase
-import com.orlinskas.kernel_inspection.database.DriverDatabase
-import com.orlinskas.kernel_inspection.database.VehicleDatabase
+import com.j256.ormlite.android.apptools.OpenHelperManager
+import com.orlinskas.kernel_inspection.database.Database
 import com.orlinskas.kernel_inspection.iteractor.CreateCardUseCase
 import com.orlinskas.kernel_inspection.iteractor.FindCardsUseCase
 import com.orlinskas.kernel_inspection.iteractor.InspectCardUseCase
@@ -42,21 +40,10 @@ class App: Application() {
         single { DriverRepository(get()) }
         single { CardRepository(get()) }
 
-        single { provideVehicleDatabase(applicationContext) }
-        single { provideDriverDatabase(applicationContext) }
-        single { provideCardDatabase(applicationContext) }
-
+        single { provideDatabase(applicationContext) }
     }
 
-    private fun provideVehicleDatabase(context: Context): VehicleDatabase {
-        return Room.databaseBuilder(context, VehicleDatabase::class.java, "vehicles").build()
-    }
-
-    private fun provideDriverDatabase(context: Context): DriverDatabase {
-        return Room.databaseBuilder(context, DriverDatabase::class.java, "drivers").build()
-    }
-
-    private fun provideCardDatabase(context: Context): CardDatabase {
-        return Room.databaseBuilder(context, CardDatabase::class.java, "cards").build()
+    private fun provideDatabase(context: Context): Database {
+        return OpenHelperManager.getHelper(context, Database::class.java)
     }
 }

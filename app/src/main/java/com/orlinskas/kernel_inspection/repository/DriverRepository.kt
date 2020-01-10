@@ -1,6 +1,5 @@
 package com.orlinskas.kernel_inspection.repository
 
-import com.orlinskas.kernel_inspection.database.DriverDatabase
 import com.orlinskas.kernel_inspection.mvvm.model.Driver
 
 class DriverRepository (private val database: DriverDatabase) {

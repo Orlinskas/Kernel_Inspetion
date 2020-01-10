@@ -1,29 +1,19 @@
 package com.orlinskas.kernel_inspection.database;
 
-import androidx.room.Dao;
-import androidx.room.Delete;
-import androidx.room.Insert;
-import androidx.room.Query;
-import androidx.room.Update;
-
+import com.j256.ormlite.dao.BaseDaoImpl;
+import com.j256.ormlite.support.ConnectionSource;
 import com.orlinskas.kernel_inspection.mvvm.model.Vehicle;
 
-import java.util.List;
+import java.sql.SQLException;
+import java.util.Collection;
 
-@Dao
-public interface VehicleDao {
-    @Query("SELECT * FROM driver WHERE id == :id")
-    Vehicle find(long id);
+public class VehicleDao extends BaseDaoImpl<Vehicle, Integer> {
 
-    @Query("SELECT * FROM vehicle")
-    List<Vehicle> findAll();
+    protected VehicleDao(ConnectionSource connectionSource, Class<Vehicle> dataClass) throws SQLException {
+        super(connectionSource, dataClass);
+    }
 
-    @Insert
-    void insert(Vehicle vehicle);
-
-    @Delete
-    void delete(Vehicle vehicle);
-
-    @Update
-    void update(Vehicle vehicle);
+    public Collection<Vehicle> getAllVehicles() throws SQLException{
+        return this.queryForAll();
+    }
 }

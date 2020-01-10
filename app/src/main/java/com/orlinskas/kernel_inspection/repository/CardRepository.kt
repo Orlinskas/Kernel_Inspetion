@@ -1,6 +1,5 @@
 package com.orlinskas.kernel_inspection.repository
 
-import com.orlinskas.kernel_inspection.database.CardDatabase
 import com.orlinskas.kernel_inspection.mvvm.model.Card
 
 class CardRepository(private val database: CardDatabase) {
