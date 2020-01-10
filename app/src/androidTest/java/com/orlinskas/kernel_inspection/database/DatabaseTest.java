@@ -20,8 +20,6 @@ import org.junit.runner.RunWith;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
-import org.junit.Assert.*;
-import java.util.List;
 
 import static junit.framework.TestCase.assertNotNull;
 import static junit.framework.TestCase.assertTrue;
@@ -29,11 +27,11 @@ import static junit.framework.TestCase.assertTrue;
 @RunWith(AndroidJUnit4.class)
 public class DatabaseTest {
     private LockingDevise lockingDevise = new LockingDevise("Mark", "Post", LockingDevisesStatus.CHEKED);
-    private Driver driver = new Driver("Petro", "Koval", null,  327632);
+    private Driver driver = new Driver("Petro", "Koval", "null",  327632);
 
     private Collection<LockingDevise> devises = new ArrayList<>();
     private Collection<Long> trailerArrivals = new ArrayList<>();
-    private Trailer trailer = new Trailer("AX-123-AB", devises, trailerArrivals);
+    private Trailer trailer;
 
     private Collection<Long> vehicleArrivals = new ArrayList<>();
     private Vehicle vehicle = new Vehicle("Volvo", trailer, driver,"AX-321-AB", vehicleArrivals);
@@ -43,7 +41,7 @@ public class DatabaseTest {
     private Database database;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         Context context = InstrumentationRegistry.getInstrumentation().getTargetContext();
         database = OpenHelperManager.getHelper(context, Database.class);
         devises.add(lockingDevise);
@@ -56,19 +54,36 @@ public class DatabaseTest {
     @Test
     public void insert() {
         try {
-            database.getCardDAO().create(card);
+            trailer = new Trailer("AX-123-AB", devises);
+            database.getTrailerDao().create(trailer);
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        Card card = null;
+        Trailer testTrailer = null;
         try {
-            card = database.getCardDAO().findFrom(this.card.getId());
+            testTrailer = database.getTrailerDao().findFrom(trailer.getId());
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        assertNotNull(card);
+        assertTrue(testTrailer.getLockingDevises().size() > 0);
+
+
+        //try {
+        //    database.getCardDAO().create(card);
+        //} catch (SQLException e) {
+        //    e.printStackTrace();
+        //}
+//
+        //Card card = null;
+        //try {
+        //    card = database.getCardDAO().findFrom(this.card.getId());
+        //} catch (SQLException e) {
+        //    e.printStackTrace();
+        //}
+//
+        //assertNotNull(card);
     }
 
 }

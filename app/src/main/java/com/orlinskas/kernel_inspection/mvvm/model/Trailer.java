@@ -1,29 +1,27 @@
 package com.orlinskas.kernel_inspection.mvvm.model;
 
+import com.j256.ormlite.dao.ForeignCollection;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
 
 import java.util.Collection;
 
-@DatabaseTable(tableName = "trailers")
+@DatabaseTable
 public class Trailer {
     @DatabaseField(generatedId = true)
     private int id;
     @DatabaseField(unique = true, canBeNull = false)
     private String registrationNumber;
-    @ForeignCollectionField
+    @ForeignCollectionField(eager = true)
     private Collection<LockingDevise> lockingDevises;
-    @ForeignCollectionField
-    private Collection<Long> arrivalTimesMillis;
 
     public Trailer() {
     }
 
-    public Trailer(String registrationNumber, Collection<LockingDevise> lockingDevises, Collection<Long> arrivalTimesMillis) {
+    public Trailer(String registrationNumber, Collection<LockingDevise> lockingDevises) {
         this.registrationNumber = registrationNumber;
         this.lockingDevises = lockingDevises;
-        this.arrivalTimesMillis = arrivalTimesMillis;
     }
 
     public String getRegistrationNumber() {
@@ -32,10 +30,6 @@ public class Trailer {
 
     public Collection<LockingDevise> getLockingDevises() {
         return lockingDevises;
-    }
-
-    public Collection<Long> getArrivalTimesMillis() {
-        return arrivalTimesMillis;
     }
 
     public int getId() {

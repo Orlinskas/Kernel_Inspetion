@@ -18,8 +18,6 @@ public class Vehicle {
     private Driver driver;
     @DatabaseField(canBeNull = false, unique = true)
     private String registrationNumber;
-    @ForeignCollectionField
-    private Collection<Long> arrivalTimeMillis;
 
     public Vehicle() {
     }
@@ -29,7 +27,6 @@ public class Vehicle {
         this.trailer = trailer;
         this.driver = driver;
         this.registrationNumber = registrationNumber;
-        this.arrivalTimeMillis = arrivalTimeMillis;
     }
 
     public String getManufacturer() {
@@ -42,10 +39,6 @@ public class Vehicle {
 
     public String getRegistrationNumber() {
         return registrationNumber;
-    }
-
-    public Collection<Long> getArrivalTimeMillis() {
-        return arrivalTimeMillis;
     }
 
     public Trailer getTrailer() {

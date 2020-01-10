@@ -8,6 +8,8 @@ import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 import com.orlinskas.kernel_inspection.mvvm.model.Card;
 import com.orlinskas.kernel_inspection.mvvm.model.Driver;
+import com.orlinskas.kernel_inspection.mvvm.model.LockingDevise;
+import com.orlinskas.kernel_inspection.mvvm.model.Trailer;
 import com.orlinskas.kernel_inspection.mvvm.model.Vehicle;
 
 import java.sql.SQLException;
@@ -20,6 +22,8 @@ public class Database extends OrmLiteSqliteOpenHelper {
     private CardDao cardDao = null;
     private VehicleDao vehicleDao = null;
     private DriverDao driverDao = null;
+    private LockingDevisesDao lockingDevisesDao = null;
+    private TrailerDao trailerDao = null;
 
     public Database(Context context){
         super(context,DATABASE_NAME, null, DATABASE_VERSION);
@@ -29,21 +33,25 @@ public class Database extends OrmLiteSqliteOpenHelper {
     public void onCreate(SQLiteDatabase db, ConnectionSource connectionSource){
         try
         {
-            TableUtils.createTable(connectionSource, CardDao.class);
-            TableUtils.createTable(connectionSource, VehicleDao.class);
-            TableUtils.createTable(connectionSource, DriverDao.class);
+            TableUtils.createTable(connectionSource, LockingDevise.class);
+            TableUtils.createTable(connectionSource, Trailer.class);
+            TableUtils.createTable(connectionSource, Driver.class);
+            TableUtils.createTable(connectionSource, Vehicle.class);
+            TableUtils.createTable(connectionSource, Card.class);
         }
-        catch (SQLException e){
-            throw new RuntimeException(e);
+        catch (Exception e){
+            e.printStackTrace();
         }
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, ConnectionSource connectionSource, int oldVer, int newVer){
         try{
-            TableUtils.dropTable(connectionSource, CardDao.class, true);
-            TableUtils.dropTable(connectionSource, VehicleDao.class, true);
-            TableUtils.dropTable(connectionSource, DriverDao.class, true);
+            TableUtils.dropTable(connectionSource, LockingDevise.class, true);
+            TableUtils.dropTable(connectionSource, Trailer.class, true);
+            TableUtils.dropTable(connectionSource, Driver.class, true);
+            TableUtils.dropTable(connectionSource, Vehicle.class, true);
+            TableUtils.dropTable(connectionSource, Card.class, true);
             onCreate(db, connectionSource);
         }
         catch (SQLException e){
@@ -72,11 +80,27 @@ public class Database extends OrmLiteSqliteOpenHelper {
         return driverDao;
     }
 
+    public LockingDevisesDao getLockingDevisesDao() throws SQLException {
+        if(lockingDevisesDao == null) {
+            lockingDevisesDao = new LockingDevisesDao(getConnectionSource(), LockingDevise.class);
+        }
+        return lockingDevisesDao;
+    }
+
+    public TrailerDao getTrailerDao() throws SQLException {
+        if(trailerDao == null) {
+            trailerDao = new TrailerDao(getConnectionSource(), Trailer.class);
+        }
+        return trailerDao;
+    }
+
     @Override
     public void close(){
         super.close();
         cardDao = null;
         vehicleDao = null;
         driverDao = null;
+        lockingDevisesDao = null;
+        trailerDao = null;
     }
 }
