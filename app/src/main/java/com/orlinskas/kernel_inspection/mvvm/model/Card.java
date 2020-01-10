@@ -1,44 +1,41 @@
 package com.orlinskas.kernel_inspection.mvvm.model;
 
-import androidx.annotation.NonNull;
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 
-import org.jetbrains.annotations.NotNull;
-
-@Entity
+@DatabaseTable(tableName = "cards")
 public class Card {
-    @PrimaryKey(autoGenerate = true)
-    private long id;
-    @NonNull
+    @DatabaseField(generatedId = true)
+    private int id;
+    @DatabaseField(foreign = true)
     private Vehicle vehicle;
-    @NonNull
+    @DatabaseField(foreign = true)
     private Trailer trailer;
-    @NonNull
+    @DatabaseField(foreign = true)
     private Driver driver;
 
-    public Card(@NotNull Vehicle vehicle, @NotNull Trailer trailer, @NotNull Driver driver) {
+    public Card() {
+    }
+
+    public Card(Vehicle vehicle, Trailer trailer, Driver driver) {
         this.vehicle = vehicle;
         this.trailer = trailer;
         this.driver = driver;
     }
 
-    @NotNull
     public Vehicle getVehicle() {
         return vehicle;
     }
 
-    @NotNull
     public Trailer getTrailer() {
         return trailer;
     }
 
-    @NotNull
     public Driver getDriver() {
         return driver;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 }

@@ -1,18 +1,25 @@
 package com.orlinskas.kernel_inspection.mvvm.model;
 
-import androidx.annotation.NonNull;
-
-import org.jetbrains.annotations.NotNull;
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 
 import java.util.List;
 
+@DatabaseTable(tableName = "trailers")
 public class Trailer {
-    @NonNull
+    @DatabaseField(generatedId = true)
+    private int id;
+    @DatabaseField(unique = true, canBeNull = false)
     private String registrationNumber;
+    @DatabaseField(foreign = true)
     private List<LockingDevises> lockingDevises;
+    @DatabaseField(foreign = true)
     private List<Long> arrivalTimesMillis;
 
-    public Trailer(@NotNull String registrationNumber, List<LockingDevises> lockingDevises, List<Long> arrivalTimesMillis) {
+    public Trailer() {
+    }
+
+    public Trailer(String registrationNumber, List<LockingDevises> lockingDevises, List<Long> arrivalTimesMillis) {
         this.registrationNumber = registrationNumber;
         this.lockingDevises = lockingDevises;
         this.arrivalTimesMillis = arrivalTimesMillis;
@@ -28,5 +35,9 @@ public class Trailer {
 
     public List<Long> getArrivalTimesMillis() {
         return arrivalTimesMillis;
+    }
+
+    public int getId() {
+        return id;
     }
 }

@@ -1,16 +1,23 @@
 package com.orlinskas.kernel_inspection.mvvm.model;
 
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 
-@Entity
+@DatabaseTable(tableName = "drivers")
 public class Driver {
-    @PrimaryKey(autoGenerate = true)
-    private long id;
+    @DatabaseField(generatedId = true)
+    private int id;
+    @DatabaseField
     private String photoUrl;
+    @DatabaseField
     private String firstName;
+    @DatabaseField
     private String lastName;
+    @DatabaseField(canBeNull = false, unique = true)
     private long personalCode;
+
+    public Driver() {
+    }
 
     public Driver(String firstName, String lastName, String photoUrl, long personalCode) {
         this.firstName = firstName;
@@ -31,7 +38,7 @@ public class Driver {
         return personalCode;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 

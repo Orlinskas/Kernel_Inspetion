@@ -1,19 +1,27 @@
 package com.orlinskas.kernel_inspection.mvvm.model;
 
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 
 import java.util.List;
 
-@Entity
+@DatabaseTable(tableName = "vehicles")
 public class Vehicle {
-    @PrimaryKey(autoGenerate = true)
-    private long id;
+    @DatabaseField(generatedId = true)
+    private int id;
+    @DatabaseField
     private String manufacturer;
+    @DatabaseField(foreign = true)
     private Trailer trailer;
+    @DatabaseField(foreign = true)
     private Driver driver;
+    @DatabaseField(canBeNull = false, unique = true)
     private String registrationNumber;
+    @DatabaseField(foreign = true)
     private List<Long> arrivalTimeMillis;
+
+    public Vehicle() {
+    }
 
     public Vehicle(String manufacturer, Trailer trailer, Driver driver, String registrationNumber, List<Long> arrivalTimeMillis) {
         this.manufacturer = manufacturer;
@@ -63,7 +71,7 @@ public class Vehicle {
         this.trailer = trailer;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 }
