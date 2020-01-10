@@ -14,12 +14,12 @@ public class Driver {
     @DatabaseField
     private String lastName;
     @DatabaseField(canBeNull = false, unique = true)
-    private long personalCode;
+    private int personalCode;
 
     public Driver() {
     }
 
-    public Driver(String firstName, String lastName, String photoUrl, long personalCode) {
+    public Driver(String firstName, String lastName, String photoUrl, int personalCode) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.photoUrl = photoUrl;

@@ -13,7 +13,7 @@ public class Card {
     public Card() {
     }
 
-    public Card(Vehicle vehicle, Trailer trailer, Driver driver) {
+    public Card(Vehicle vehicle) {
         this.vehicle = vehicle;
     }
 

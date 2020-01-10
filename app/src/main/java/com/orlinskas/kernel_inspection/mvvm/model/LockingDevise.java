@@ -5,7 +5,7 @@ import com.j256.ormlite.table.DatabaseTable;
 import com.orlinskas.kernel_inspection.enums.LockingDevisesStatus;
 
 @DatabaseTable(tableName = "locking devises")
-public class LockingDevises {
+public class LockingDevise {
     @DatabaseField
     private String checkMark;
     @DatabaseField
@@ -13,10 +13,10 @@ public class LockingDevises {
     @DatabaseField
     private Enum<LockingDevisesStatus> status;
 
-    public LockingDevises() {
+    public LockingDevise() {
     }
 
-    public LockingDevises(String checkMark, String carrier, Enum<LockingDevisesStatus> status) {
+    public LockingDevise(String checkMark, String carrier, Enum<LockingDevisesStatus> status) {
         this.checkMark = checkMark;
         this.carrier = carrier;
         this.status = status;

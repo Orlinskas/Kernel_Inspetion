@@ -13,14 +13,14 @@ public class Trailer {
     @DatabaseField(unique = true, canBeNull = false)
     private String registrationNumber;
     @ForeignCollectionField
-    private Collection<LockingDevises> lockingDevises;
+    private Collection<LockingDevise> lockingDevises;
     @ForeignCollectionField
     private Collection<Long> arrivalTimesMillis;
 
     public Trailer() {
     }
 
-    public Trailer(String registrationNumber, Collection<LockingDevises> lockingDevises, Collection<Long> arrivalTimesMillis) {
+    public Trailer(String registrationNumber, Collection<LockingDevise> lockingDevises, Collection<Long> arrivalTimesMillis) {
         this.registrationNumber = registrationNumber;
         this.lockingDevises = lockingDevises;
         this.arrivalTimesMillis = arrivalTimesMillis;
@@ -30,7 +30,7 @@ public class Trailer {
         return registrationNumber;
     }
 
-    public Collection<LockingDevises> getLockingDevises() {
+    public Collection<LockingDevise> getLockingDevises() {
         return lockingDevises;
     }
 

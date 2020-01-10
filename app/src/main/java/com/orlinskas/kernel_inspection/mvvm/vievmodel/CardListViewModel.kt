@@ -18,8 +18,8 @@ public class CardListViewModel (private val findCardsUseCase: FindCardsUseCase) 
         }
     }
 
-    private fun handleFindSuccess(list: List<Card>) {
-        cardsLiveData.postValue(list)
+    private fun handleFindSuccess(collection: Collection<Card>) {
+        cardsLiveData.postValue(collection.toList())
     }
 
     private fun handleFindFailure(failure: Failure) {

@@ -13,7 +13,7 @@ public class CreateCardUseCase(private val repository: CardRepository): BaseUseC
     data class CreateCardData(val vehicle: Vehicle, val driver: Driver, val trailer: Trailer)
 
     override suspend fun run(params: CreateCardData): Either<Failure, Card> {
-        val card = Card(params.vehicle, params.trailer, params.driver)
+        val card = Card(params.vehicle)
 
         try {
             repository.insert(card)
